@@ -6,37 +6,22 @@
             "value": "Premium_LRS"
         },
         "adminUsername": {
-            "value": "admin123"
-        },
-        "adminPassword": {
-            "value": "GEN-PASSWORD"
+            "value": "dovives"
         },
         "sqlServerServiceAccountUserName": {
-            "value": "admin123sql"
-        },
-        "sqlServerServiceAccountPassword": {
-            "value": "GEN-PASSWORD"
+            "value": "svc_sql"
         },
         "sharePointSetupUserAccountUserName": {
-            "value": "admin123sp"
-        },
-        "sharePointSetupUserAccountPassword": {
-            "value": "GEN-PASSWORD"
-        },
-        "sharePointFarmAccountPassword": {
-            "value": "GEN-PASSWORD"
-        },
-        "sharePointFarmPassphrasePassword": {
-            "value": "GEN-PASSWORD"
+            "value": "svc_spsetup"
         },
         "sppublicIPAddressName": {
-            "value": "sppublicIP"
+            "value": "dvsspfarm16PIP"
         },
         "spDNSPrefix": {
-            "value": "GEN-UNIQUE"
+            "value": "dvsspfarm16"
         },
         "storageAccountNamePrefix": {
-            "value": "GEN-UNIQUE"
+            "value": "dvsspfarmstg"
         },
          "adVMSize": {
             "value": "Standard_DS1"
@@ -46,6 +31,18 @@
         },
         "spVMSize": {
             "value": "Standard_DS3"
+        },
+        "sharepointFarmName": {
+            "value": "dvsspfarm16"
+        },
+        "domainName": {
+            "value": "dvsspfarm16"
+        },
+        "sharePointFarmAccountUserName": {
+            "value": "svs_spfarm"
+        },
+        "spPublicIPRGName": {
+            "value": "dvsspfarm16RG"
         }
     }
 }
