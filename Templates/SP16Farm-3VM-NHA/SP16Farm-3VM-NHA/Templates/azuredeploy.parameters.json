@@ -1,0 +1,48 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountType": {
+            "value": "Premium_LRS"
+        },
+        "adminUsername": {
+            "value": "dovives"
+        },
+        "sqlServerServiceAccountUserName": {
+            "value": "svc_sql"
+        },
+        "sharePointSetupUserAccountUserName": {
+            "value": "svc_spsetup"
+        },
+        "sppublicIPAddressName": {
+            "value": "spfarmPIPName"
+        },
+        "spDNSPrefix": {
+            "value": "spfarm"
+        },
+        "storageAccountNamePrefix": {
+            "value": "spfarmstg"
+        },
+         "adVMSize": {
+            "value": "Standard_DS1"
+        },
+        "sqlVMSize": {
+            "value": "Standard_DS3"
+        },
+        "spVMSize": {
+            "value": "Standard_DS3"
+        },
+        "sharepointFarmName": {
+            "value": "spfarm"
+        },
+        "domainName": {
+            "value": "dominiquevives.local"
+        },
+        "sharePointFarmAccountUserName": {
+            "value": "svs_spfarm"
+        },
+        "spPublicIPRGName": {
+            "value": "spfarmPIPRG"
+        }
+    }
+}
