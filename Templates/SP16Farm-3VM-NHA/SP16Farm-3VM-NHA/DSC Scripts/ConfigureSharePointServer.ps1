@@ -143,7 +143,7 @@ configuration ConfigureSharePointServer
         # 
         #
         #**********************************************************
-        SPCreateFarm CreateSPFarm
+        SPCreateFarm ConfigureSharePointServer
         {
             FarmConfigDatabaseName = $SPPrefix + "_Config"
             DatabaseServer =         $DatabaseServer
