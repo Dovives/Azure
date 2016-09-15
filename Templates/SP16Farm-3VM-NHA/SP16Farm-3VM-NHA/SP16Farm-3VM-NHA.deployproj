@@ -36,7 +36,7 @@
     <None Include="DSC Scripts\CreateADPDC.ps1" />
     <None Include="DSC Scripts\PrepareSharePointServer.ps1" />
     <None Include="DSC Scripts\PrepareSqlServer.ps1" />
-    <None Include="DSC\ConfigureSharePointServer.ps1.zip" />
+    <None Include="DSC\ConfigureSharePointAppServer.ps1.zip" />
     <None Include="DSC\ConfigureSqlServer.ps1.zip" />
     <None Include="DSC\CreateADPDC.ps1.zip" />
     <None Include="DSC\PrepareSharePointServer.ps1.zip" />

@@ -31,7 +31,7 @@ configuration ConfigureSharePointServer
         [Parameter(Mandatory=$true)] [ValidateNotNullorEmpty()] [PSCredential] $SPContentCredential,
         [Parameter(Mandatory=$true)] [ValidateNotNullorEmpty()] [string]       $SPSuperReaderUsername,
         [Parameter(Mandatory=$true)] [ValidateNotNullorEmpty()] [string]       $SPSuperUserUsername,
-        [Parameter(Mandatory=$true)] [ValidateNotNullorEmpty()] [string]       $SPPrefix="spfarm",
+        [Parameter(Mandatory=$true)] [ValidateNotNullorEmpty()] [string]       $SPPrefix="dvsspfarm",
         [Parameter(Mandatory=$true)] [ValidateNotNullorEmpty()] [string]       $SPWebAppUrl,
         [Parameter(Mandatory=$true)] [ValidateNotNullorEmpty()] [string]       $SPMySiteUrl,    
 
