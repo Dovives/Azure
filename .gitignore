@@ -1,0 +1,5 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Templates/SP13Farm-3VM-NHA/dsc/ConfigureSharePointServer.ps1

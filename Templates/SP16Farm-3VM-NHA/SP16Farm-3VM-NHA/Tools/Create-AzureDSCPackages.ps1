@@ -1,4 +1,4 @@
-﻿Publish-AzureRmVMDscConfiguration -ConfigurationPath "..\DSC Scripts\ConfigureSharePointServer.ps1" -OutputArchivePath "..\DSC\ConfigureSharePointAppServer.ps1.zip" -Force
+﻿Publish-AzureRmVMDscConfiguration -ConfigurationPath "..\DSC Scripts\ConfigureSharePointServer.ps1" -OutputArchivePath "..\DSC\ConfigureSharePointServer.ps1.zip" -Force
 
 #Publish-AzureRmVMDscConfiguration -ConfigurationPath "..\DSCConfiguration\ConfigureSharePointDCacheServer.ps1" -OutputArchivePath "..\DSC\ConfigureSharePointDCacheServer.ps1.zip" -Force
 
