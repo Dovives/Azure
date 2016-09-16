@@ -46,9 +46,11 @@ configuration ConfigureSharePointServer
 
     Enable-CredSSPNTLM -DomainName $DomainName
 
+	
     Import-DscResource -ModuleName xComputerManagement, xActiveDirectory, xCredSSP #cConfigureSharepoint
 
-    # Added for SP2016 
+    # Added for SP2016
+	Import-DscResource -ModuleName PSDesiredStateConfiguration
     Import-DscResource -ModuleName SharePointDsc
     Import-DscResource -ModuleName xWebAdministration
 
