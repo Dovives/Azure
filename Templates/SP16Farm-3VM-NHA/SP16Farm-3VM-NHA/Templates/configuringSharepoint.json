@@ -150,17 +150,17 @@
             "SPPrefix": "[parameters('SPPrefix')]",
             "SPWebAppUrl": "[parameters('SPWebAppUrl')]",
             "SPMySiteUrl": "[parameters('SPMySiteUrl')]"
-          }
-        },
-        "protectedSettings": {
-          "Items": {
-            "AdminPassword": "[parameters('adminPassword')]",
-            "SharePointSetupUserAccountPassword": "[parameters('sharePointSetupUserAccountPassword')]",
-            "SharePointFarmAccountPassword": "[parameters('sharePointFarmAccountPassword')]",
-            "SharePointFarmPassphrasePassword": "[parameters('sharePointFarmPassphrasePassword')]",
-            "SPServicesAccountPassword": "[parameters('SPServicesAccountPassword')]",
-            "SPWebAccountPassword": "[parameters('SPWebAccountPassword')]",
-            "SPContentAccountPassword": "[parameters('SPContentAccountPassword')]"
+          },
+          "protectedSettings": {
+            "Items": {
+              "AdminPassword": "[parameters('adminPassword')]",
+              "SharePointSetupUserAccountPassword": "[parameters('sharePointSetupUserAccountPassword')]",
+              "SharePointFarmAccountPassword": "[parameters('sharePointFarmAccountPassword')]",
+              "SharePointFarmPassphrasePassword": "[parameters('sharePointFarmPassphrasePassword')]",
+              "SPServicesAccountPassword": "[parameters('SPServicesAccountPassword')]",
+              "SPWebAccountPassword": "[parameters('SPWebAccountPassword')]",
+              "SPContentAccountPassword": "[parameters('SPContentAccountPassword')]"
+            }
           }
         }
       }
