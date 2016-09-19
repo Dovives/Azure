@@ -23,17 +23,16 @@ configuration ConfigureSharePointServer
 
         [parameter(Mandatory)] [String]$DatabaseServer,
 
-		[parameter(Mandatory)]
-        [String]$Configuration,
+		[parameter(Mandatory)] [String]$Configuration,
 
-        [Parameter(Mandatory)] [System.Management.Automation.PSCredential] $SPServicesCredential,
-        [Parameter(Mandatory)] [System.Management.Automation.PSCredential] $SPWebCredential,
+        [Parameter(Mandatory)] [System.Management.Automation.PSCredential]$SPServicesCredential,
+        [Parameter(Mandatory)] [System.Management.Automation.PSCredential]$SPWebCredential,
         [Parameter(Mandatory)] [System.Management.Automation.PSCredential] $SPContentCredential,
-        [Parameter(Mandatory)] [string]       $SPSuperReaderUsername,
-        [Parameter(Mandatory)] [string]       $SPSuperUserUsername,
-        [Parameter(Mandatory)] [string]       $SPPrefix="dvsspfarm",
-        [Parameter(Mandatory)] [string]       $SPWebAppUrl,
-        [Parameter(Mandatory)] [string]       $SPMySiteUrl,    
+        [Parameter(Mandatory)] [string]$SPSuperReaderUsername,
+        [Parameter(Mandatory)] [string]$SPSuperUserUsername,
+        [Parameter(Mandatory)] [string]$SPPrefix="dvsspfarm",
+        [Parameter(Mandatory)] [string]$SPWebAppUrl,
+        [Parameter(Mandatory)] [string]$SPMySiteUrl,    
 
         [Int]$RetryCount=30,
         [Int]$RetryIntervalSec=60
