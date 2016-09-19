@@ -23,7 +23,7 @@ configuration ConfigureSharePointServer
 
         [parameter(Mandatory)] [String]$DatabaseServer,
 
-		[parameter(Mandatory)] [String]$Configuration,
+		#[parameter(Mandatory)] [String]$Configuration,
 
         [Parameter(Mandatory)] [System.Management.Automation.PSCredential]$SPServicesCredential,
         [Parameter(Mandatory)] [System.Management.Automation.PSCredential]$SPWebCredential,
