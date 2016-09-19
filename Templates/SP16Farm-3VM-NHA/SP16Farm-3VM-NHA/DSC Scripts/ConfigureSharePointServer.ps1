@@ -26,14 +26,14 @@ configuration ConfigureSharePointServer
 		[parameter(Mandatory)]
         [String]$Configuration,
 
-        [Parameter(Mandatory=$true)] [ValidateNotNullorEmpty()] [PSCredential] $SPServicesCredential,
-        [Parameter(Mandatory=$true)] [ValidateNotNullorEmpty()] [PSCredential] $SPWebCredential,
-        [Parameter(Mandatory=$true)] [ValidateNotNullorEmpty()] [PSCredential] $SPContentCredential,
-        [Parameter(Mandatory=$true)] [ValidateNotNullorEmpty()] [string]       $SPSuperReaderUsername,
-        [Parameter(Mandatory=$true)] [ValidateNotNullorEmpty()] [string]       $SPSuperUserUsername,
-        [Parameter(Mandatory=$true)] [ValidateNotNullorEmpty()] [string]       $SPPrefix="dvsspfarm",
-        [Parameter(Mandatory=$true)] [ValidateNotNullorEmpty()] [string]       $SPWebAppUrl,
-        [Parameter(Mandatory=$true)] [ValidateNotNullorEmpty()] [string]       $SPMySiteUrl,    
+        [Parameter(Mandatory)] [System.Management.Automation.PSCredential] $SPServicesCredential,
+        [Parameter(Mandatory)] [System.Management.Automation.PSCredential] $SPWebCredential,
+        [Parameter(Mandatory)] [System.Management.Automation.PSCredential] $SPContentCredential,
+        [Parameter(Mandatory)] [string]       $SPSuperReaderUsername,
+        [Parameter(Mandatory)] [string]       $SPSuperUserUsername,
+        [Parameter(Mandatory)] [string]       $SPPrefix="dvsspfarm",
+        [Parameter(Mandatory)] [string]       $SPWebAppUrl,
+        [Parameter(Mandatory)] [string]       $SPMySiteUrl,    
 
         [Int]$RetryCount=30,
         [Int]$RetryIntervalSec=60
