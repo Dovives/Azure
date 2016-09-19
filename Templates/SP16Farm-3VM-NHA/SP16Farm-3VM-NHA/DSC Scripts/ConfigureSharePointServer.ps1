@@ -117,6 +117,14 @@ configuration ConfigureSharePointServer
             DependsOn = "[xComputer]DomainJoin"
         }
 
+        Registry DisableLoopBackCheck {
+            Ensure = "Present"
+            Key = "HKLM:\System\CurrentControlSet\Control\Lsa"
+            ValueName = "DisableLoopbackCheck"
+            ValueData = "1"
+            ValueType = "Dword"
+        }
+
         # Added for SP2016 
         xWebAppPool RemoveDotNet2Pool         { Name = ".NET v2.0";            Ensure = "Absent"; DependsOn = "[xComputer]DomainJoin"}
         xWebAppPool RemoveDotNet2ClassicPool  { Name = ".NET v2.0 Classic";    Ensure = "Absent"; DependsOn = "[xComputer]DomainJoin"}
@@ -144,7 +152,7 @@ configuration ConfigureSharePointServer
         # 
         #
         #**********************************************************
-        SPCreateFarm ConfigureSharePointServer
+        SPCreateFarm CreateSPFarm
         {
             FarmConfigDatabaseName = $SPPrefix + "_Config"
             DatabaseServer =         $DatabaseServer
