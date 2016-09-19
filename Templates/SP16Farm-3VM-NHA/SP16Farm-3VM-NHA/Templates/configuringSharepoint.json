@@ -150,7 +150,8 @@
             "SPPrefix": "[parameters('SPPrefix')]",
             "SPWebAppUrl": "[parameters('SPWebAppUrl')]",
             "SPMySiteUrl": "[parameters('SPMySiteUrl')]"
-          },
+          }
+        },
           "protectedSettings": {
             "Items": {
               "AdminPassword": "[parameters('adminPassword')]",
@@ -164,6 +165,5 @@
           }
         }
       }
-    }
   ]
 }
