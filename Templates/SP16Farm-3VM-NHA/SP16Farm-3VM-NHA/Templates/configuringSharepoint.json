@@ -157,9 +157,9 @@
             "SharePointSetupUserAccountPassword": "[parameters('sharePointSetupUserAccountPassword')]",
             "SharePointFarmAccountPassword": "[parameters('sharePointFarmAccountPassword')]",
             "SharePointFarmPassphrasePassword": "[parameters('sharePointFarmPassphrasePassword')]",
-            "SPServicesAccountPassword": "[parameters('sharePointFarmPassphrasePassword')]",
-            "SPWebAccountPassword": "[parameters('sharePointFarmPassphrasePassword')]",
-            "SPContentAccountPassword": "[parameters('sharePointFarmPassphrasePassword')]"
+            "SPServicesAccountPassword": "[parameters('SPServicesAccountPassword')]",
+            "SPWebAccountPassword": "[parameters('SPWebAccountPassword')]",
+            "SPContentAccountPassword": "[parameters('SPContentAccountPassword')]"
           }
         }
       }

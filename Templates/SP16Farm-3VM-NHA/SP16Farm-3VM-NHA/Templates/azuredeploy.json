@@ -96,7 +96,7 @@
       "metadata": {
         "description": "The FQDN of the AD Domain created "
       },
-      "defaultValue": "contoso.local"
+      "defaultValue": "dominiquevives.local"
     },
     "sqlServerServiceAccountUserName": {
       "type": "string",
@@ -228,7 +228,18 @@
       "type": "string",
       "metadata": {
         "description": "The Content Account Name for SP2016"
-      }
+      },
+      "defaultValue": "sp_content"
+    },
+    "SPServicesAccountPassword": {
+      "type": "securestring"
+    },
+
+    "SPWebAccountPassword": {
+      "type": "securestring"
+    },
+    "SPContentAccountPassword": {
+      "type": "securestring"
     },
     "SPSuperReaderUsername": {
       "type": "string",
@@ -248,7 +259,8 @@
       "type": "string",
       "metadata": {
         "description": "The SPPrefix for SharePoint DB of SP2016"
-      }
+      },
+      "defaultValue": "dvsspfarm"
     },
     "SPWebAppUrl": {
       "type": "string",
@@ -263,15 +275,6 @@
         "description": "The MySite URL for SP2016"
       },
       "defaultValue": "http://mysite.contoso.local"
-    },
-    "SPServicesAccountPassword": {
-      "type": "securestring"
-    },
-    "SPWebAccountPassword": {
-      "type": "securestring"
-    },
-    "SPContentAccountPassword": {
-      "type": "securestring"
     }
   },
   "variables": {
