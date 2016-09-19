@@ -27,7 +27,7 @@ configuration ConfigureSharePointServer
 
         [Parameter(Mandatory)] [System.Management.Automation.PSCredential]$SPServicesCredential,
         [Parameter(Mandatory)] [System.Management.Automation.PSCredential]$SPWebCredential,
-        [Parameter(Mandatory)] [System.Management.Automation.PSCredential] $SPContentCredential,
+        [Parameter(Mandatory)] [System.Management.Automation.PSCredential]$SPContentCredential,
         [Parameter(Mandatory)] [string]$SPSuperReaderUsername,
         [Parameter(Mandatory)] [string]$SPSuperUserUsername,
         [Parameter(Mandatory)] [string]$SPPrefix="dvsspfarm",
