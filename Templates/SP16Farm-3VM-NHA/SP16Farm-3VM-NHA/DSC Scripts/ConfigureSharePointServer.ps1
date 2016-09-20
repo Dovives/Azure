@@ -41,6 +41,9 @@ configuration ConfigureSharePointServer
     [System.Management.Automation.PSCredential ]$DomainCreds = New-Object System.Management.Automation.PSCredential ("${DomainName}\$($Admincreds.UserName)", $Admincreds.Password)
     [System.Management.Automation.PSCredential ]$FarmCreds = New-Object System.Management.Automation.PSCredential ("${DomainName}\$($SharePointFarmAccountcreds.UserName)", $SharePointFarmAccountcreds.Password)
     [System.Management.Automation.PSCredential ]$SPsetupCreds = New-Object System.Management.Automation.PSCredential ("${DomainName}\$($SharePointSetupUserAccountcreds.UserName)", $SharePointSetupUserAccountcreds.Password)
+	[System.Management.Automation.PSCredential ]$SPServicesCreds = New-Object System.Management.Automation.PSCredential ("${DomainName}\$($SPServicesCredential.UserName)", $SPServicesCredential.Password)
+	[System.Management.Automation.PSCredential ]$SPWebCreds = New-Object System.Management.Automation.PSCredential ("${DomainName}\$($SPWebCredential.UserName)", $SPWebCredential.Password)
+	[System.Management.Automation.PSCredential ]$SPCntCreds = New-Object System.Management.Automation.PSCredential ("${DomainName}\$($SPContentCredential.UserName)", $SPContentCredential.Password)
 
 
     Enable-CredSSPNTLM -DomainName $DomainName
@@ -156,7 +159,7 @@ configuration ConfigureSharePointServer
         {
             FarmConfigDatabaseName = $SPPrefix + "_Config"
             DatabaseServer =         $DatabaseServer
-            FarmAccount = $SharePointFarmAccountcreds
+            FarmAccount = $FarmCreds
             Passphrase = $SharePointFarmPassphrasecreds
             AdminContentDatabaseName = $SPPrefix + "_AdminContent"
             CentralAdministrationPort = 8080
@@ -171,7 +174,7 @@ configuration ConfigureSharePointServer
         SPManagedAccount ServicePoolManagedAccount
         {
             AccountName          = $SPServicesCredential.UserName
-            Account              = $SPServicesCredential
+            Account              = $SPServicesCreds
             PsDscRunAsCredential = $SPsetupCreds
             DependsOn            = "[SPCreateFarm]CreateSPFarm"
         }
@@ -179,7 +182,7 @@ configuration ConfigureSharePointServer
         SPManagedAccount WebPoolManagedAccount
         {
             AccountName          = $SPWebCredential.UserName
-            Account              = $SPWebCredential
+            Account              = $SPWebCreds
             PsDscRunAsCredential = $SPsetupCreds
             DependsOn            = "[SPCreateFarm]CreateSPFarm"
         }
