@@ -120,6 +120,27 @@ configuration ConfigureSharePointServer
             DependsOn = "[xComputer]DomainJoin"
         }
 
+
+		xADUser CreateSpServicesAccount
+        {
+            DomainAdministratorCredential = $DomainCreds
+            DomainName = $DomainName
+            UserName = $SPServicesCredential.UserName
+            Password =$SPServicesCreds
+            Ensure = "Present"
+            DependsOn = "[xComputer]DomainJoin"
+        }
+
+		xADUser CreateSPWebAccount
+        {
+            DomainAdministratorCredential = $DomainCreds
+            DomainName = $DomainName
+            UserName = $SPWebCredential.UserName
+            Password =$SPWebCreds
+            Ensure = "Present"
+            DependsOn = "[xComputer]DomainJoin"
+        }
+
         Registry DisableLoopBackCheck {
             Ensure = "Present"
             Key = "HKLM:\System\CurrentControlSet\Control\Lsa"
