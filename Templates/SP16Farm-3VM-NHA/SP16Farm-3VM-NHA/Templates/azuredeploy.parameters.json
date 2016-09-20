@@ -39,7 +39,7 @@
             "value": "dominiquevives.local"
         },
         "sharePointFarmAccountUserName": {
-            "value": "svs_spfarm"
+            "value": "svc_spfarm"
         },
         "spPublicIPRGName": {
             "value": "dvsfarmPIPRG"

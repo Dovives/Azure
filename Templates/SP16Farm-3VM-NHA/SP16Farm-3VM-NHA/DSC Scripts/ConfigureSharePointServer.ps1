@@ -162,7 +162,7 @@ configuration ConfigureSharePointServer
             CentralAdministrationPort = 8080
             CentralAdministrationAuth = 'NTLM'
             ServerRole = 'Application'
-            PsDscRunAsCredential = $SharePointSetupUserAccountcreds
+            PsDscRunAsCredential = $SPsetupCreds
             DependsOn = @("[xComputer]DomainJoin","[xWebSite]RemoveDefaultWebSite","[xADUser]CreateFarmAccount","[xADUser]CreateSetupAccount","[Group]AddSetupUserAccountToLocalAdminsGroup")
            
         }
@@ -172,7 +172,7 @@ configuration ConfigureSharePointServer
         {
             AccountName          = $SPServicesCredential.UserName
             Account              = $SPServicesCredential
-            PsDscRunAsCredential = $SharePointSetupUserAccountcreds
+            PsDscRunAsCredential = $SPsetupCreds
             DependsOn            = "[SPCreateFarm]CreateSPFarm"
         }
 
@@ -180,7 +180,7 @@ configuration ConfigureSharePointServer
         {
             AccountName          = $SPWebCredential.UserName
             Account              = $SPWebCredential
-            PsDscRunAsCredential = $SharePointSetupUserAccountcreds
+            PsDscRunAsCredential = $SPsetupCreds
             DependsOn            = "[SPCreateFarm]CreateSPFarm"
         }
 
@@ -204,7 +204,7 @@ configuration ConfigureSharePointServer
             ScriptErrorReportingDelay                   = 30
             ScriptErrorReportingEnabled                 = $true
             ScriptErrorReportingRequireAuth             = $true
-            PsDscRunAsCredential                        = $SharePointSetupUserAccountcreds
+            PsDscRunAsCredential                        = $SPsetupCreds
             DependsOn                                   = "[SPCreateFarm]CreateSPFarm"
         }
 		 
@@ -212,7 +212,7 @@ configuration ConfigureSharePointServer
         {
             Name                 = $ServiceAppPoolName
             ServiceAccount       = $SPServicesCredential.UserName
-            PsDscRunAsCredential = $SharePointSetupUserAccountcreds
+            PsDscRunAsCredential = $SPsetupCreds
             DependsOn            = "[SPCreateFarm]CreateSPFarm"
         }
         SPStateServiceApp StateServiceApp
@@ -220,7 +220,7 @@ configuration ConfigureSharePointServer
             Name                 = "State Service Application"
             DatabaseName         = $SPPrefix + "_State"
             DatabaseServer       = $DatabaseServer
-            PsDscRunAsCredential = $SharePointSetupUserAccountcreds
+            PsDscRunAsCredential = $SPsetupCreds
             DependsOn             = "[SPServiceAppPool]MainServiceAppPool"
         }
 
@@ -232,7 +232,7 @@ configuration ConfigureSharePointServer
             AuditlogMaxSize       = 30
             DatabaseName          = $SPPrefix + "_SecureStore"
             DatabaseServer        = $DatabaseServer
-            PsDscRunAsCredential  = $SharePointSetupUserAccountcreds
+            PsDscRunAsCredential  = $SPsetupCreds
             DependsOn             = "[SPServiceAppPool]MainServiceAppPool"
         }
 
@@ -242,7 +242,7 @@ configuration ConfigureSharePointServer
             ApplicationPool      = $ServiceAppPoolName
             DatabaseName         = $SPPrefix + "_MMS"
             DatabaseServer       = $DatabaseServer
-            PsDscRunAsCredential = $SharePointSetupUserAccountcreds
+            PsDscRunAsCredential = $SPsetupCreds
             DependsOn            = "[SPServiceAppPool]MainServiceAppPool"
         }
 
@@ -252,7 +252,7 @@ configuration ConfigureSharePointServer
             DatabaseName          = $SPPrefix + "_AppManagement"
             DatabaseServer        = $DatabaseServer
             ApplicationPool       = $ServiceAppPoolName
-            PsDscRunAsCredential  = $SharePointSetupUserAccountcreds
+            PsDscRunAsCredential  = $SPsetupCreds
             DependsOn             = "[SPServiceAppPool]MainServiceAppPool"
         }
 
@@ -262,7 +262,7 @@ configuration ConfigureSharePointServer
             DatabaseName          = $SPPrefix + "_SubscriptionSettings"
             DatabaseServer        = $DatabaseServer
             ApplicationPool       = $ServiceAppPoolName
-            PsDscRunAsCredential  = $SharePointSetupUserAccountcreds
+            PsDscRunAsCredential  = $SPsetupCreds
             DependsOn             = "[SPServiceAppPool]MainServiceAppPool"
         }		
 
