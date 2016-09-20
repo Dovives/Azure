@@ -58,8 +58,8 @@ configuration ConfigureSharePointServer
     {
         LocalConfigurationManager
         {
-            ConfigurationMode = 'ApplyOnly'
             RebootNodeIfNeeded = $true
+            ActionAfterReboot = 'ContinueConfiguration'
         }
         xCredSSP Server
         {
@@ -163,7 +163,7 @@ configuration ConfigureSharePointServer
             CentralAdministrationAuth = 'NTLM'
             ServerRole = 'Application'
             PsDscRunAsCredential = $SharePointSetupUserAccountcreds
-            DependsOn = @("[xComputer]DomainJoin","[xWebSite]RemoveDefaultWebSite","[xADUser]CreateFarmAccount","[xADUser]CreateSetupAccount", "[Group]AddSetupUserAccountToLocalAdminsGroup")
+            DependsOn = @("[xComputer]DomainJoin","[xWebSite]RemoveDefaultWebSite","[xADUser]CreateFarmAccount","[xADUser]CreateSetupAccount","[Group]AddSetupUserAccountToLocalAdminsGroup")
            
         }
 
