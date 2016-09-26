@@ -304,7 +304,7 @@ configuration ConfigureSharePointServer
             SyncDBServer         = $DatabaseServer
             FarmAccount          = $FarmCreds
             PsDscRunAsCredential = $SPsetupCreds
-            DependsOn            = '[SPSite]MySiteSiteCollection'
+            DependsOn             = "[SPServiceAppPool]MainServiceAppPool"
         }
 
 
