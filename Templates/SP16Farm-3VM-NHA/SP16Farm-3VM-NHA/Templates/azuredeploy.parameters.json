@@ -15,13 +15,13 @@
             "value": "svc_spsetup"
         },
         "sppublicIPAddressName": {
-            "value": "dvsfarmPIPName"
+            "value": "sppublicIP"
         },
         "spDNSPrefix": {
-            "value": "dvsspfarm"
+            "value": "dvsspseize"
         },
         "storageAccountNamePrefix": {
-            "value": "dvsfarmstorage"
+            "value": "dvsspseizestorage"
         },
          "adVMSize": {
             "value": "Standard_DS1"
@@ -33,7 +33,7 @@
             "value": "Standard_DS3"
         },
         "sharepointFarmName": {
-            "value": "dvsspfarm"
+            "value": "dvsspseize"
         },
         "domainName": {
             "value": "dominiquevives.local"
@@ -42,7 +42,7 @@
             "value": "svc_spfarm"
         },
         "spPublicIPRGName": {
-            "value": "dvsfarmPIPRG"
+            "value": "dvsspseize"
         },
       "baseUrl": {
         "value": "https://raw.githubusercontent.com/Dovives/Azure/master/Templates/SP16Farm-3VM-NHA/SP16Farm-3VM-NHA/"
@@ -50,17 +50,17 @@
         "SPContentAccountUserName": {
             "value": "sp_content"
         },
-        "SPPrefix": {
-            "value": "dvsspfarm"
-        },
+      "SPPrefix": {
+        "value": "dvsspseize"
+      },
         "SPWebAppUrl": {
             "value": "http://webapp.dominiquevives.local"
         },
         "SPMySiteUrl": {
             "value": "http://mysite.dominiquevives.local"
         },
-        "virtualNetworkName": {
-            "value": "dvsspfarmVNET"
-        }
+      "virtualNetworkName": {
+        "value": "dvsspseizeVNET"
+      }
     }
 }

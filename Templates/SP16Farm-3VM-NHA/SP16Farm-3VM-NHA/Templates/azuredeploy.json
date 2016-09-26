@@ -7,7 +7,7 @@
       "metadata": {
         "description": "The name of the Sharepoint farm"
       },
-      "defaultValue": "dvsspfarm"
+      "defaultValue": "dvsspseize"
     },
     "location": {
       "type": "string",
@@ -21,7 +21,7 @@
       "metadata": {
         "description": "The name of the Virtual Network to Create"
       },
-      "defaultValue": "dvsspfarmVNET"
+      "defaultValue": "dvsspseizeVNET"
     },
     "virtualNetworkAddressRange": {
       "type": "string",
@@ -260,7 +260,7 @@
       "metadata": {
         "description": "The SPPrefix for SharePoint DB of SP2016"
       },
-      "defaultValue": "dvsspfarm"
+      "defaultValue": "dvsspseize"
     },
     "SPWebAppUrl": {
       "type": "string",

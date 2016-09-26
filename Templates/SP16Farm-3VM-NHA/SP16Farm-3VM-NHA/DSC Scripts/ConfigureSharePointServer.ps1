@@ -30,7 +30,7 @@ configuration ConfigureSharePointServer
         [Parameter(Mandatory)] [System.Management.Automation.PSCredential]$SPContentCredential,
         [Parameter(Mandatory)] [string]$SPSuperReaderUsername,
         [Parameter(Mandatory)] [string]$SPSuperUserUsername,
-        [Parameter(Mandatory)] [string]$SPPrefix="dvsspfarm",
+        [Parameter(Mandatory)] [string]$SPPrefix="spfarm",
         [Parameter(Mandatory)] [string]$SPWebAppUrl,
         [Parameter(Mandatory)] [string]$SPMySiteUrl,    
 
@@ -53,8 +53,8 @@ configuration ConfigureSharePointServer
 
     # Added for SP2016
 	Import-DscResource -ModuleName PSDesiredStateConfiguration
-    Import-DscResource -ModuleName SharePointDsc
-    Import-DscResource -ModuleName xWebAdministration
+    Import-DscResource -ModuleName SharePointDsc -ModuleVersion "1.2.0.0"
+    Import-DscResource -ModuleName xWebAdministration -ModuleVersion "1.13.0.0"
 
 
     Node localhost
@@ -169,7 +169,7 @@ configuration ConfigureSharePointServer
             DependsOn = "[xWebSite]RemoveDefaultWebSite"
         }
 
-		$ServiceAppPoolName = "SharePoint Service Applications"
+		$ServiceAppPoolName = "SharePoint_Service_Application_Pool"
         #**********************************************************
         # Farm Creation 
         #
@@ -264,7 +264,7 @@ configuration ConfigureSharePointServer
         {  
             Name                 = "Managed Metadata Service Application"
             ApplicationPool      = $ServiceAppPoolName
-            DatabaseName         = $SPPrefix + "_MMS"
+            DatabaseName         = $SPPrefix + "_ManagedMetada"
             DatabaseServer       = $DatabaseServer
             PsDscRunAsCredential = $SPsetupCreds
             DependsOn            = "[SPServiceAppPool]MainServiceAppPool"
@@ -288,8 +288,80 @@ configuration ConfigureSharePointServer
             ApplicationPool       = $ServiceAppPoolName
             PsDscRunAsCredential  = $SPsetupCreds
             DependsOn             = "[SPServiceAppPool]MainServiceAppPool"
-        }		
+        }
 
+
+		SPUserProfileServiceApp UserProfileServiceApp
+        {
+            Name                 = "User Profile Service Application"
+            ApplicationPool      = $ServiceAppPoolName
+            MySiteHostLocation   = $SPMySiteUrl
+            ProfileDBName        = $SPPrefix + "_ProfileDB"
+            ProfileDBServer      = $DatabaseServer
+            SocialDBName         = $SPPrefix + "_SocialDB"
+            SocialDBServer       = $DatabaseServer
+            SyncDBName           = $SPPrefix + "_SyncDB"
+            SyncDBServer         = $DatabaseServer
+            FarmAccount          = $FarmCreds
+            PsDscRunAsCredential = $SPsetupCreds
+            DependsOn            = '[SPSite]MySiteSiteCollection'
+        }
+
+
+		
+		#**********************************************************
+        # Web applications
+        #
+        # This section creates the web applications in the 
+        # SharePoint farm, as well as managed paths and other web
+        # application settings
+        #**********************************************************
+        $useSSL = $SPWebAppUrl.ToLower().Contains('https://')
+        SPWebApplication HostWebApplication
+        {
+            Name                   = "SharePoint Site"
+            ApplicationPool        = $ServiceAppPoolName
+            ApplicationPoolAccount = $SPWebCreds.UserName
+            AllowAnonymous         = $false
+            UseSSL                 = $useSSL
+            AuthenticationMethod   = 'NTLM'
+            DatabaseName           = $SPPrefix + "_SitesContent"
+            DatabaseServer         = $DatabaseServer
+            Url                    = $SPWebAppUrl
+            Port                   = [Uri]::new($SPWebAppUrl).Port
+            PsDscRunAsCredential   = $SPsetupCreds
+            DependsOn              = "[SPManagedAccount]WebPoolManagedAccount"
+        }   
+        
+        #Web Application Settings
+        SPWebAppGeneralSettings SiteGeneralSettings
+        {
+            Url = $SPWebAppUrl
+            MaximumUploadSize = 250
+            PsDscRunAsCredential = $SPsetupCreds
+            DependsOn = "[SPWebApplication]HostWebApplication"
+        }
+
+        #Root Site Collections
+        SPSite HostSiteCollection
+        {
+            Url                      = $SPWebAppUrl
+            OwnerAlias               = $SPsetupCreds.UserName
+            Name                     = "Root site"
+            Template                 = "STS#0"
+            PsDscRunAsCredential     = $SPsetupCreds
+            DependsOn                = "[SPWebApplication]HostWebApplication"
+        }
+		
+		#Set the CachAccounts for the web application
+        SPCacheAccounts AddCacheAccounts
+        {
+            WebAppUrl              = $SPWebAppUrl
+            SuperUserAlias         = $SPSuperUserUsername
+            SuperReaderAlias       = $SPSuperReaderUsername
+            PsDscRunAsCredential   = $SPsetupCreds
+            DependsOn              = "[SPWebApplication]HostWebApplication"
+        }
 	}        
 }
 
