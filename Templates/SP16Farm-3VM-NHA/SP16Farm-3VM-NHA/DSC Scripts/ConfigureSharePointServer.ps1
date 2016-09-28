@@ -291,22 +291,6 @@ configuration ConfigureSharePointServer
         }
 
 
-		SPUserProfileServiceApp UserProfileServiceApp
-        {
-            Name                 = "User Profile Service Application"
-            ApplicationPool      = $ServiceAppPoolName
-            MySiteHostLocation   = $SPMySiteUrl
-            ProfileDBName        = $SPPrefix + "_ProfileDB"
-            ProfileDBServer      = $DatabaseServer
-            SocialDBName         = $SPPrefix + "_SocialDB"
-            SocialDBServer       = $DatabaseServer
-            SyncDBName           = $SPPrefix + "_SyncDB"
-            SyncDBServer         = $DatabaseServer
-            FarmAccount          = $FarmCreds
-            PsDscRunAsCredential = $SPsetupCreds
-            DependsOn             = "[SPServiceAppPool]MainServiceAppPool"
-        }
-
 
 		
 		#**********************************************************
@@ -361,6 +345,45 @@ configuration ConfigureSharePointServer
             SuperReaderAlias       = $SPSuperReaderUsername
             PsDscRunAsCredential   = $SPsetupCreds
             DependsOn              = "[SPWebApplication]HostWebApplication"
+        }
+
+		#Configure Managed Path and My Site Host
+
+		SPManagedPath ManagedPathPersonal
+        {
+            WebAppUrl            = $SPWebAppUrl
+            PsDscRunAsCredential = $SPsetupCreds
+            RelativeUrl          = "personal"
+            Explicit             = $false
+            HostHeader           = $false 
+            DependsOn            = "[SPWebApplication]HostWebApplication"
+        }
+
+        SPSite MySiteSiteCollection
+        {
+            Url                      = $SPMySiteUrl
+            OwnerAlias               = $SPsetupCreds.UserName
+            HostHeaderWebApplication = $SPWebAppUrl
+            Name                     = "My Sites"
+            Template                 = "SPSMSITEHOST#0"
+            PsDscRunAsCredential     = $SPsetupCreds
+            DependsOn              = "[SPManagedPath]ManagedPathPersonal"
+        }
+
+		SPUserProfileServiceApp UserProfileServiceApp
+        {
+            Name                 = "User Profile Service Application"
+            ApplicationPool      = $ServiceAppPoolName
+            MySiteHostLocation   = $SPMySiteUrl
+            ProfileDBName        = $SPPrefix + "_ProfileDB"
+            ProfileDBServer      = $DatabaseServer
+            SocialDBName         = $SPPrefix + "_SocialDB"
+            SocialDBServer       = $DatabaseServer
+            SyncDBName           = $SPPrefix + "_SyncDB"
+            SyncDBServer         = $DatabaseServer
+            FarmAccount          = $FarmCreds
+            PsDscRunAsCredential = $SPsetupCreds
+            DependsOn             = "[SPServiceAppPool]MainServiceAppPool"
         }
 	}        
 }
