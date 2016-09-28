@@ -115,7 +115,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('sqlVMName'),'/CreateSqlServer')]",
+      "name": "[concat(parameters('sqlVMName'),'/ConfigureSqlServer')]",
       "apiVersion": "2015-06-15",
       "location": "[parameters('location')]",
       "dependsOn": [
