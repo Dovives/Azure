@@ -62,7 +62,7 @@
     <None Include="Tools\Create-KeyVaultSecret.ps1" />
     <None Include="Tools\Deploy-AzureResourceGroup.ps1" />
     <None Include="Tools\Get-DscReferenceModules.ps1" />
-    <None Include="Tools\Remove-PLAVMs.ps1" />
+    <None Include="Tools\Remove-VMs.ps1" />
     <None Include="Tools\Stop-AzureResourceGroupVMs.ps1" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
