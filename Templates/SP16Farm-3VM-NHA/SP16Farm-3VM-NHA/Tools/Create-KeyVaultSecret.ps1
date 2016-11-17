@@ -6,7 +6,7 @@ Param(
     [string] $ResourceGroupName = 'dvsspfarm-pla',
     [string] $VaultName = "dvsspfarmplavlt",
     [string] $SecretKey = "spsetup",
-    [string] $SecretValue = "*DouMe971234"
+    [string] $SecretValue = ""
 )
 
 $vault = Get-AzureRmKeyVault -VaultName $VaultName
