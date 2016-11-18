@@ -382,6 +382,7 @@ configuration ConfigureSharePointServer
             SyncDBName           = $SPPrefix + "_SyncDB"
             SyncDBServer         = $DatabaseServer
             FarmAccount          = $FarmCreds
+			EnableNetBIOS = $true
             PsDscRunAsCredential = $SPsetupCreds
             DependsOn             = "[SPServiceAppPool]MainServiceAppPool"
         }
