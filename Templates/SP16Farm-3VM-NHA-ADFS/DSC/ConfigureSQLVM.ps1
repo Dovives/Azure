@@ -24,11 +24,12 @@ configuration ConfigureSQLVM
     Import-DscResource -ModuleName xComputerManagement, xNetworking, xDisk, cDisk, xActiveDirectory, xSQLServer
 	
 	WaitForSqlSetup
-    $Interface = Get-NetAdapter| Where Name -Like "Ethernet*"| Select-Object -First 1
+    $Interface = Get-NetAdapter| Where-Object Name -Like "Ethernet*"| Select-Object -First 1
     $InterfaceAlias = $($Interface.Name)
     [PSCredential]$DomainCreds = New-Object PSCredential ("${DomainNetbiosName}\$($DomainAdminCreds.UserName)", $DomainAdminCreds.Password)
     [PSCredential]$SPSCreds = New-Object PSCredential ("${DomainNetbiosName}\$($SPSetupCreds.UserName)", $SPSetupCreds.Password)
     [PSCredential]$SQLCreds = New-Object PSCredential ("${DomainNetbiosName}\$($SqlSvcCreds.UserName)", $SqlSvcCreds.Password)
+    $ComputerName = Get-Content env:computername
 
     Node localhost
     {
@@ -53,19 +54,6 @@ configuration ConfigureSQLVM
             DriveLetter = "F"
 	        DependsOn="[xWaitForDisk]Disk2"
         }
-        xWaitforDisk Disk3
-        {
-            DiskNumber = 3
-            RetryIntervalSec =$RetryIntervalSec
-            RetryCount = $RetryCount
-            DependsOn="[cDiskNoRestart]SQLDataDisk"
-        }
-        cDiskNoRestart SQLLogDisk
-        {
-            DiskNumber = 3
-            DriveLetter = "G"
-            DependsOn="[xWaitForDisk]Disk3"
-        }
         xFirewall DatabaseEngineFirewallRule
         {
             Direction = "Inbound"
@@ -82,7 +70,7 @@ configuration ConfigureSQLVM
         {
             Name = "RSAT-AD-PowerShell"
             Ensure = "Present"
-            DependsOn = "[cDiskNoRestart]SQLDataDisk","[cDiskNoRestart]SQLLogDisk"
+            DependsOn = "[cDiskNoRestart]SQLDataDisk"
 
         }
         xDnsServerAddress DnsServerAddress
@@ -107,7 +95,7 @@ configuration ConfigureSQLVM
 
         xComputer DomainJoin
         {
-            Name = $env:COMPUTERNAME
+            Name = $ComputerName
             DomainName = $DomainFQDN
             Credential = $DomainCreds
             DependsOn = "[xWaitForADDomain]DscForestWait"
@@ -140,7 +128,7 @@ configuration ConfigureSQLVM
         {
             Name = "${DomainNetbiosName}\$($DomainAdminCreds.UserName)"
             Ensure = "Present"
-            SQLServer = $env:COMPUTERNAME
+            SQLServer = $ComputerName
             SQLInstanceName = "MSSQLSERVER"
             LoginType = "WindowsUser"
             DependsOn = "[xComputer]DomainJoin"
@@ -150,7 +138,7 @@ configuration ConfigureSQLVM
         {
             Name = "${DomainNetbiosName}\$($SPSetupCreds.UserName)"
             Ensure = "Present"
-            SQLServer = $env:COMPUTERNAME
+            SQLServer = $ComputerName
             SQLInstanceName = "MSSQLSERVER"
             LoginType = "WindowsUser"
             DependsOn = "[xADUser]CreateSPSetupAccount"
@@ -160,7 +148,7 @@ configuration ConfigureSQLVM
         {
             Name = "${DomainNetbiosName}\$($DomainAdminCreds.UserName)"
             Ensure = "Present"
-            SQLServer = $env:COMPUTERNAME
+            SQLServer = $ComputerName
             SQLInstanceName = "MSSQLSERVER"
             ServerRole = "sysadmin"
             DependsOn = "[xSQLServerLogin]AddDomainAdminLogin"
@@ -170,7 +158,7 @@ configuration ConfigureSQLVM
         {
             Name = "${DomainNetbiosName}\$($SPSetupCreds.UserName)"
             Ensure = "Present"
-            SQLServer = $env:COMPUTERNAME
+            SQLServer = $ComputerName
             SQLInstanceName = "MSSQLSERVER"
             ServerRole = "securityadmin","dbcreator"
             DependsOn = "[xSQLServerLogin]AddSPSetupLogin"
@@ -178,7 +166,7 @@ configuration ConfigureSQLVM
 
         xSQLServerMaxDop ConfigureMaxDOP
         {
-            SQLServer = $env:COMPUTERNAME
+            SQLServer = $ComputerName
             SQLInstanceName = "MSSQLSERVER"
             MaxDop = 1
             DependsOn = "[xComputer]DomainJoin"
@@ -238,6 +226,9 @@ function WaitForSqlSetup
 
 
 <#
+# Azure DSC extension logging: C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\2.21.0.0
+# Azure DSC extension configuration: C:\Packages\Plugins\Microsoft.Powershell.DSC\2.21.0.0\DSCWork
+
 help ConfigureSQLVM
 $DomainAdminCreds = Get-Credential -Credential "yvand"
 $SqlSvcCreds = Get-Credential -Credential "sqlsvc"

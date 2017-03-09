@@ -3,8 +3,8 @@
 
 Param(
     [string] [Parameter(Mandatory=$true)] $ResourceGroupLocation,
-    [string] $ResourceGroupName = 'dvsspfarm-pla',
-    [string] $VaultName = "dvsspfarmplavlt"
+    [string] $ResourceGroupName = 'dvsspseize',
+    [string] $VaultName = "dvsspseizevault"
 )
 
 New-AzureRmKeyVault -VaultName $VaultName -ResourceGroupName $ResourceGroupName -Location $ResourceGroupLocation -EnabledForTemplateDeployment
