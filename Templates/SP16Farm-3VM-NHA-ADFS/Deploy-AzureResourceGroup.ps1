@@ -4,8 +4,8 @@
 
 ### Define variables
 $resourceGroupLocation = 'westeurope'
-$resourceGroupName = 'yd-sp16adfs'
-$resourceDeploymentName = 'yd-sp16adfs-deployment'
+$resourceGroupName = 'dvssp16adfs'
+$resourceDeploymentName = 'dvssp16adfs-deployment'
 $templateFileName = 'azuredeploy.json'
 $templateParametersFileName = 'azuredeploy.parameters.json'
 $scriptRoot = $PSScriptRoot
@@ -29,7 +29,7 @@ $passwords['spPassphrase'] = $securePassword
 
 # Additional settings
 $optionalParameters = New-Object -TypeName HashTable
-$optionalParameters['vaultName'] = "ydsp16adfsvault"
+$optionalParameters['vaultName'] = "dvssp16adfsvault"
 $overrideTemplateParametersFile = $false
 if ($overrideTemplateParametersFile -eq $true) {
     $optionalParameters['baseurl'] = "https://raw.githubusercontent.com/Yvand/AzureRM-Templates/Dev/SharePoint/SP16-ADFS"
