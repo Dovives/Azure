@@ -9,7 +9,7 @@ $resourceDeploymentName = 'dvssp16adfs-deployment'
 $templateFileName = 'azuredeploy.json'
 $templateParametersFileName = 'azuredeploy.parameters.json'
 $scriptRoot = $PSScriptRoot
-$scriptRoot = "C:\Job\Dev\Github\AzureRM-Templates\SharePoint\SP16-ADFS"
+#$scriptRoot = "C:\Job\Dev\Github\AzureRM-Templates\SharePoint\SP16-ADFS"
 $TemplateFile = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($scriptRoot, $templateFileName))
 $templateParametersFile = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($scriptRoot, $templateParametersFileName))
 $dscSourceFolder = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($scriptRoot, "DSC"))
@@ -29,6 +29,7 @@ $passwords['spPassphrase'] = $securePassword
 
 # Additional settings
 $optionalParameters = New-Object -TypeName HashTable
+$optionalParameters['templatePrefix'] = "dvssp16adfs"
 $optionalParameters['vaultName'] = "dvssp16adfsvault"
 $overrideTemplateParametersFile = $false
 if ($overrideTemplateParametersFile -eq $true) {
@@ -38,6 +39,11 @@ if ($overrideTemplateParametersFile -eq $true) {
     $optionalParameters['dscSPTemplateURL'] = "https://github.com/Yvand/AzureRM-Templates/raw/Dev/SharePoint/SP16-ADFS/DSC/ConfigureSPVM.zip"
     $optionalParameters['dscSPUpdateTagVersion'] = "1.0"
 }
+
+#Public IP DNS Name 
+$optionalParameters['vmDCPublicIPDnsName'] = $($optionalParameters['templatePrefix'])+"-dc"
+$optionalParameters['vmSQLPublicIPDnsName'] = $($optionalParameters['templatePrefix'])+"-sql"
+$optionalParameters['vmSPPublicIPDnsName'] = $($optionalParameters['templatePrefix'])+"-sp"
 
 # Artifacts
 {
