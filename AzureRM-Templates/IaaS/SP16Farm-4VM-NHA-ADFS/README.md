@@ -12,10 +12,10 @@ This template deploys 4 new Azure VMs, each with its own public IP address and s
 
 It also provisions a key vault to store passwords and SharePoint passphrase.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub.com%2FDovives%2FAzure%2Fraw%2FDev%2FAzureRM-Templates%2FIaaS%2FSP16Farm-4VM-NHA-ADFS%2Fazuredeploy.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FDovives%2FAzure%2Fmaster%2FAzureRM-Templates%2FIaaS%2FSP16Farm-4VM-NHA-ADFS%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fgithub.com%2FDovives%2FAzure%2Fraw%2FDev%2FAzureRM-Templates%2FIaaS%2FSP16Farm-4VM-NHA-ADFS%2Fazuredeploy.json" target="_blank">
+<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FDovives%2FAzure%2Fmaster%2FAzureRM-Templates%2FIaaS%2FSP16Farm-4VM-NHA-ADFS%2Fazuredeploy.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
 
