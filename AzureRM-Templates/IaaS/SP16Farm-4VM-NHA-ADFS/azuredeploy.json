@@ -45,7 +45,7 @@
     },
     "adminUserName": {
       "type": "string",
-      "defaultValue": "yvand",
+      "defaultValue": "dovives",
       "minLength": 1,
       "metadata": {
         "description": "Name of the AD and SharePoint administrator"
