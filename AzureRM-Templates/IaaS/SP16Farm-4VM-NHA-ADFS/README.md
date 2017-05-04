@@ -1,4 +1,4 @@
-# AzureRM template for SharePoint 2016 with ADFS and Two VM 
+# AzureRM template for SharePoint 2016 with ADFS and Two SP VM 
 
 ## This template is based on Yvand SharePoint 2016 
 
