@@ -45,7 +45,7 @@
     },
     "adminUserName": {
       "type": "string",
-      "defaultValue": "dovives",
+      "defaultValue": "yvand",
       "minLength": 1,
       "metadata": {
         "description": "Name of the AD and SharePoint administrator"
@@ -266,7 +266,7 @@
     },
     "dscDCTemplateURL": {
       "type": "string",
-      "defaultValue": "https://github.com/Dovives/Azure/raw/master/AzureRM-Templates/IaaS/SP16Farm-4VM-NHA-ADFS/DSC/ConfigureDCVM.zip",
+      "defaultValue": "https://github.com/Yvand/AzureRM-Templates/raw/master/SharePoint/SP16-ADFS/DSC/ConfigureDCVM.zip",
       "metadata": {
         "description": "Link to DSC configuration of DC VM"
       }
@@ -280,7 +280,7 @@
     },
     "dscSQLTemplateURL": {
       "type": "string",
-      "defaultValue": "https://github.com/Dovives/Azure/raw/master/AzureRM-Templates/IaaS/SP16Farm-4VM-NHA-ADFS/DSC/ConfigureSQLVM.zip",
+      "defaultValue": "https://github.com/Yvand/AzureRM-Templates/raw/master/SharePoint/SP16-ADFS/DSC/ConfigureSQLVM.zip",
       "metadata": {
         "description": "Link to DSC configuration of SQL VM"
       }
@@ -294,7 +294,7 @@
     },
     "dscSPTemplateURL": {
       "type": "string",
-      "defaultValue": "https://github.com/Dovives/Azure/raw/master/AzureRM-Templates/IaaS/SP16Farm-4VM-NHA-ADFS/DSC/ConfigureSPVM.zip",
+      "defaultValue": "https://github.com/Yvand/AzureRM-Templates/raw/master/SharePoint/SP16-ADFS/DSC/ConfigureSPVM.zip",
       "metadata": {
         "description": "Link to DSC configuration of SP VM"
       }
@@ -308,9 +308,9 @@
     },
     "dscFETemplateURL": {
       "type": "string",
-      "defaultValue": "https://github.com/Dovives/Azure/raw/master/AzureRM-Templates/IaaS/SP16Farm-4VM-NHA-ADFS/DSC/ConfigureFEVM.zip",
+      "defaultValue": "https://github.com/Yvand/AzureRM-Templates/raw/master/SharePoint/SP16-ADFS/DSC/ConfigureFEVM.zip",
       "metadata": {
-        "description": "Link to DSC configuration of SP WFE VM"
+        "description": "Link to DSC configuration of SP VM"
       }
     },
     "dscFEUpdateTagVersion": {
