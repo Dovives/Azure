@@ -1,2 +1,2 @@
 # Azure
-Contains all my Azure Project
+Contains all my Azure projects
