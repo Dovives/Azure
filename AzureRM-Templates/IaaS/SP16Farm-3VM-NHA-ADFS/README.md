@@ -1,4 +1,10 @@
 # AzureRM template for SharePoint 2016 with ADFS
+
+## This template is a copy of ARM Template created by Yvand  
+
+[Yvand Github repos with initial is available here](https://github.com/Yvand/AzureRM-Templates/tree/master/SharePoint/SP16-ADFS)
+
+
 ## Description
 This template deploys 3 new Azure VMs, each with its own public IP address and subnet:
 * A new AD Domain Controller with a root certificate authority (AD CS) and AD FS configured
