@@ -33,7 +33,7 @@ configuration ConfigureFEVM
         [String]$SPTrustedSitesName = "SPSites"
     )
 
-    Import-DscResource -ModuleName xComputerManagement, xDisk, xNetworking, xActiveDirectory, xCredSSP, xWebAdministration, SharePointDsc, xPSDesiredStateConfiguration, xDnsServer, xCertificate
+    Import-DscResource -ModuleName xComputerManagement, xDisk, cDisk, xNetworking, xActiveDirectory, xCredSSP, xWebAdministration, SharePointDsc, xPSDesiredStateConfiguration, xDnsServer, xCertificate
 
     $Interface=Get-NetAdapter| Where-Object Name -Like "Ethernet*"| Select-Object -First 1
     $InterfaceAlias=$($Interface.Name)
@@ -67,7 +67,7 @@ configuration ConfigureFEVM
             RetryCount = $RetryCount
         }
 
-        xDisk SPDataDisk
+        cDiskNoRestart SPDataDisk
         {
             DiskNumber = 2
             DriveLetter = "F"
