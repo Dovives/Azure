@@ -74,8 +74,8 @@ configuration ConfigureFEVM
             DependsOn = "[xWaitforDisk]Disk2"
         }
 
-        WindowsFeature ADPS     { Name = "RSAT-AD-PowerShell"; Ensure = "Present"; DependsOn = "[xDisk]SPDataDisk" }
-        WindowsFeature DnsTools { Name = "RSAT-DNS-Server";    Ensure = "Present"; DependsOn = "[xDisk]SPDataDisk" }
+        WindowsFeature ADPS     { Name = "RSAT-AD-PowerShell"; Ensure = "Present"; DependsOn = "[cDiskNoRestart]SPDataDisk" }
+        WindowsFeature DnsTools { Name = "RSAT-DNS-Server";    Ensure = "Present"; DependsOn = "[cDiskNoRestart]SPDataDisk" }
         
         xDnsServerAddress DnsServerAddress
         {
@@ -594,7 +594,7 @@ configuration ConfigureFEVM
             Name                 = $serviceAppPoolName
             ServiceAccount       = $SPSvcCredsQualified.UserName
             PsDscRunAsCredential = $SPSetupCredsQualified
-            DependsOn            = "[SPCreateFarm]CreateSPFarm"
+            DependsOn            = "[SPJoinFarm]JoinFarm"
         }
 
         SPServiceInstance UPAServiceInstance
@@ -602,7 +602,7 @@ configuration ConfigureFEVM
             Name                 = "User Profile Service"
             Ensure               = "Present"
             PsDscRunAsCredential = $SPSetupCredsQualified
-            DependsOn            = "[SPCreateFarm]CreateSPFarm"
+            DependsOn            = "[SPJoinFarm]JoinFarm"
         }
 
         SPUserProfileServiceApp UserProfileServiceApp
@@ -669,7 +669,7 @@ $DNSServer = "10.0.1.4"
 $DomainFQDN = "contoso.local"
 $DCName = "DC"
 
-ConfigureSPVM -DomainAdminCreds $DomainAdminCreds -SPSetupCreds $SPSetupCreds -SPFarmCreds $SPFarmCreds -SPSvcCreds $SPSvcCreds -SPAppPoolCreds $SPAppPoolCreds -SPPassphraseCreds $SPPassphraseCreds -DNSServer $DNSServer -DomainFQDN $DomainFQDN -DCName $DCName -ConfigurationData @{AllNodes=@(@{ NodeName="localhost"; PSDscAllowPlainTextPassword=$true })} -OutputPath "C:\Data\\output"
+ConfigureFEVM -DomainAdminCreds $DomainAdminCreds -SPSetupCreds $SPSetupCreds -SPFarmCreds $SPFarmCreds -SPSvcCreds $SPSvcCreds -SPAppPoolCreds $SPAppPoolCreds -SPPassphraseCreds $SPPassphraseCreds -DNSServer $DNSServer -DomainFQDN $DomainFQDN -DCName $DCName -ConfigurationData @{AllNodes=@(@{ NodeName="localhost"; PSDscAllowPlainTextPassword=$true })} -OutputPath "C:\Data\\output"
 Set-DscLocalConfigurationManager -Path "C:\Data\output\"
 Start-DscConfiguration -Path "C:\Data\output" -Wait -Verbose -Force
 
