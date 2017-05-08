@@ -1143,7 +1143,8 @@
           "configurationArguments": {
             "DNSServer": "[variables('vmDC').nicPrivateIPAddress]",
             "DomainFQDN": "[parameters('domainFQDN')]",
-            "DCName": "[parameters('vmDCName')]"
+            "DCName": "[parameters('vmDCName')]",
+            "SQLName": "[parameters('vmSQLName')]"
           },
           "privacy": {
             "dataCollection": "enable"
@@ -1209,7 +1210,8 @@
           "configurationArguments": {
             "DNSServer": "[variables('vmDC').nicPrivateIPAddress]",
             "DomainFQDN": "[parameters('domainFQDN')]",
-            "DCName": "[parameters('vmDCName')]"
+            "DCName": "[parameters('vmDCName')]",
+            "SQLName": "[parameters('vmSQLName')]"
           },
           "privacy": {
             "dataCollection": "enable"

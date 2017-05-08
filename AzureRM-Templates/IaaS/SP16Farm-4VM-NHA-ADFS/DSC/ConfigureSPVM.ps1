@@ -12,6 +12,9 @@ configuration ConfigureSPVM
         [Parameter(Mandatory)]
         [String]$DCName,
 
+		[Parameter(Mandatory)]
+        [String]$SQLName,
+
         [Parameter(Mandatory)]
         [System.Management.Automation.PSCredential]$DomainAdminCreds,
 
@@ -327,7 +330,7 @@ configuration ConfigureSPVM
         #**********************************************************
         SPCreateFarm CreateSPFarm
         {
-            DatabaseServer           = "sql"
+            DatabaseServer           = $SQLName
             FarmConfigDatabaseName   = $SPDBPrefix+"Config"
             Passphrase               = $SPPassphraseCreds
             FarmAccount              = $SPFarmCredsQualified

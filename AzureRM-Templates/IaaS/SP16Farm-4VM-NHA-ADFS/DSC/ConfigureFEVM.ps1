@@ -12,6 +12,9 @@ configuration ConfigureFEVM
         [Parameter(Mandatory)]
         [String]$DCName,
 
+		[Parameter(Mandatory)]
+        [String]$SQLName,
+
         [Parameter(Mandatory)]
         [System.Management.Automation.PSCredential]$DomainAdminCreds,
 
@@ -330,7 +333,7 @@ configuration ConfigureFEVM
         #**********************************************************
         SPJoinFarm JoinFarm
         {
-            DatabaseServer           = "sql"
+            DatabaseServer           = $SQLName
             FarmConfigDatabaseName   = $SPDBPrefix+"Config"
             Passphrase               = $SPPassphraseCreds
             InstallAccount           = $SPFarmCredsQualified
