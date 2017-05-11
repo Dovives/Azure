@@ -336,8 +336,7 @@ configuration ConfigureFEVM
             DatabaseServer           = $SQLName
             FarmConfigDatabaseName   = $SPDBPrefix+"Config"
             Passphrase               = $SPPassphraseCreds
-            InstallAccount           = $SPFarmCredsQualified
-            PsDscRunAsCredential     = $SPSetupCredsQualified
+            InstallAccount           = $SPSetupCredsQualified            
             DependsOn = "[xRemoteFile]DownloadLdapcp"
         }
 
