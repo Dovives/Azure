@@ -8,8 +8,8 @@ Param(
     [switch] $UploadArtifacts,
     [string] $StorageAccountName,
     [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + '-stageartifacts',
-    [string] $TemplateFile = 'LoadBalancedVirtualMachine.json',
-    [string] $TemplateParametersFile = 'LoadBalancedVirtualMachine.parameters.json',
+    [string] $TemplateFile = 'PublicLoadBalancedVirtualMachine.json',
+    [string] $TemplateParametersFile = 'PublicLoadBalancedVirtualMachine.parameters.json',
     [string] $ArtifactStagingDirectory = '.',
     [string] $DSCSourceFolder = 'DSC',
     [switch] $ValidateOnly
