@@ -1,0 +1,15 @@
+{
+    "properties": {
+        "roleDefinitionId": "/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+        "principalIds": [
+            "[parameters('RGOwners')]"
+        ],
+        "resourceGroup": "DC-RG-Name",
+        "dependsOn": [],
+        "displayName": "<user or group TBD> : Owner"
+    },
+    "kind": "roleAssignment",
+    "id": "/providers/Microsoft.Management/managementGroups/AzBlueprintBuiltIns/providers/Microsoft.Blueprint/blueprints/dc-rg-rbac-policy/artifacts/rbac-rg-owner",
+    "type": "Microsoft.Blueprint/blueprints/artifacts",
+    "name": "rbac-rg-owner"
+}
