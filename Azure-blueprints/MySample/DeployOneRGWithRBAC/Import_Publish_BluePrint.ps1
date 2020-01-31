@@ -4,14 +4,14 @@ Import-AzBlueprintWithArtifact -Name RG-DC-RBAC -ManagementGroupId "MG_Dovives_R
 # Get the blueprint we just created
 $bp = Get-AzBlueprint -Name RG-DC-RBAC -ManagementGroupId "MG_Dovives_Root"
 # Publish version 1.0
-Publish-AzBlueprint -Blueprint $bp -Version 1.1
+Publish-AzBlueprint -Blueprint $bp -Version 1.3
 
 
 # Get the version of the blueprint you want to assign, which we will pas to New-AzBlueprintAssignment
 $publishedBp = Get-AzBlueprint -ManagementGroupId "MG_Dovives_Root" -Name "RG-DC-RBAC" -LatestPublished
 
 # Each resource group artifact in the blueprint will need a hashtable for the actual RG name and location
-$rgHash = @{ name="RG-DC-RBAC"}
+$rgHash = @{ name="RG-DC-GEM"}
 
 # all other (non-rg) parameters are listed in a single hashtable, with a key/value pair for each parameter
 $parameters = @{
@@ -27,4 +27,4 @@ $parameters = @{
 $rgArray = @{ "DC-RG-Name" = $rgHash }
 
 # Assign the new blueprint to the specified subscription (Assignment updates should use Set-AzBlueprintAssignment
-New-AzBlueprintAssignment -Name "MyAssign" -Blueprint $publishedBp -Location 'West Europe' -SubscriptionId "1619bfac-1484-4da0-95cc-dec25338e962" -ResourceGroupParameter $rgArray -Parameter $parameters
+New-AzBlueprintAssignment -Name "GEM-DEMO" -Blueprint $publishedBp -Location 'West Europe' -SubscriptionId "1619bfac-1484-4da0-95cc-dec25338e962" -ResourceGroupParameter $rgArray -Parameter $parameters
