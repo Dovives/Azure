@@ -1,0 +1,4 @@
+Path;RuleName;BackendPoolName;BackendIP;BackendPort;BackendProtocol
+Default;Default;DummyBackend;10.254.254.254;443;https
+/internal/mercure/*;internal-mercure;APIMTEST;10.x.x.x;443;https
+/echo/resource;tata;APIMTEST;10.x.x.x;443;https

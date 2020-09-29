@@ -1,0 +1,3 @@
+FQDNListener;BackendName;BackendIP;FrontCertificateName;FrontCertificateFileNamePFX;AuthentificationCertificateName;AuthentificationCertificateFileNameCER;BackendPort;BackendProtocol;ProbePath;Routing
+api-wafdev.contoso.io;APIMPROD;X.X.X.X;constoso.io;contoso.io.pfx;contoso.io;contoso.io.cer;443;https;/status-0123456789abcdef;export_prod.csv
+api-test-wafdev.contoso.io;APIMDEV;X.X.X.X;constoso.io;contoso.io.pfx;contoso.io;contoso.io.cer;443;https;/status-0123456789abcdef;export_test.csv
